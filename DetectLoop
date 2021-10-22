@@ -1,0 +1,72 @@
+
+
+class Node {
+        int data;
+        Node next;
+	}
+public class SingleLinkList {
+
+	 static Node newNode(int data){
+		 Node temp=new Node();
+		 temp.data=data;
+		 temp.next=null;
+		 return temp;
+		
+	 }
+	
+		public static void TraverseLinkedList(Node Head){
+		while(Head != null){
+			System.out.println(Head.data + " ");
+			Head=Head.next;
+		}
+		
+		}
+		static Node detectloop(Node Head){
+		//check Null or Single Item in list 
+		if (Head == null || Head.next == null){
+			return null;
+		}
+		Node Step1=Head;
+		Node Step2=Head;
+		// Move Step1 one step ahead
+		Step1=Step1.next;
+		// Move Step2 2 Steps ahead 
+		Step2=Step2.next.next;
+		while(Step2 != null && Step2.next !=null){
+			if(Step1 == Step2)
+				break;
+				Step1=Step1.next;
+				Step2=Step2.next.next;
+				
+				
+			
+		}
+		Step1=Head;
+		while(Step1!=Step2){
+			Step1=Step1.next;
+			Step2=Step2.next;
+			
+		}
+		return Step1;
+		}
+		public static void main(String[] args)
+		{
+		  Node head = newNode(50);
+		  head.next = newNode(20);
+		  head.next.next = newNode(15);
+		  head.next.next.next = newNode(4);
+		  head.next.next.next.next = newNode(10);
+		 
+		  // Create a loop for testing
+		  head.next.next.next.next.next = head.next.next;
+		 
+		  Node res = detectloop(head);
+		  if (res == null)
+		    System.out.print("Loop does not exist");
+		  else
+		    System.out.print("Loop starting node is " +  res.data);
+		}
+		}
+		
+
+
