@@ -1,0 +1,27 @@
+
+public class TaxCalculation {
+
+	public static double basetax(int amount) {
+		// TODO Auto-generated method stub
+		double basetax = amount * 0.10;
+		return basetax;
+		
+
+	}
+	public static double salestax(int amount){
+		double aggregatedamount= amount + (amount * 0.10);
+		return aggregatedamount;
+	}
+	public static double incometax(int amount){
+		double tax= amount * 0.20;
+		return tax;
+
+}
+	public static void main(String argrs[]){
+		System.out.println("Income Tax is"+ incometax(10000));
+		System.out.println("Price inclusive of tax is"+ salestax(10000));
+		System.out.println("Base Tax is"+ basetax(10000));
+	}
+}
+
+
